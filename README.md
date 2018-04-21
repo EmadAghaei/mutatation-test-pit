@@ -1,6 +1,6 @@
 # mutation-test-pit
 
-To run the mutation tests, execute the following commands
+Execute the following commands to  run the mutation tests
 
     mvn clean install                              #clean and compile
     mvn test                                       #run jUnit
