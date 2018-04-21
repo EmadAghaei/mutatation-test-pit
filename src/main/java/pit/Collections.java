@@ -1,4 +1,4 @@
-package pithw6;/*
+package pit;/*
  * Copyright 1997-2007 Sun Microsystems, Inc.  All Rights Reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
@@ -53,7 +53,7 @@ import java.util.*;
  * <p>
  * <p>This class is a member of the
  * <a href="{@docRoot}/../technotes/guides/collections/index.html">
- * Java pithw6.Collections Framework</a>.
+ * Java pit.Collections Framework</a>.
  *
  * @author Josh Bloch
  * @author Neal Gafter
@@ -446,8 +446,8 @@ public class Collections {
      * the size of the list.)
      * <p>
      * <p>For example, suppose <tt>list</tt> comprises<tt> [t, a, n, k, s]</tt>.
-     * After invoking <tt>pithw6.Collections.rotate(list, 1)</tt> (or
-     * <tt>pithw6.Collections.rotate(list, -4)</tt>), <tt>list</tt> will comprise
+     * After invoking <tt>pit.Collections.rotate(list, 1)</tt> (or
+     * <tt>pit.Collections.rotate(list, -4)</tt>), <tt>list</tt> will comprise
      * <tt>[s, t, a, n, k]</tt>.
      * <p>
      * <p>Note that this method can usefully be applied to sublists to
@@ -456,13 +456,13 @@ public class Collections {
      * moves the element at index <tt>j</tt> forward to position
      * <tt>k</tt> (which must be greater than or equal to <tt>j</tt>):
      * <pre>
-     *     pithw6.Collections.rotate(list.subList(j, k+1), -1);
+     *     pit.Collections.rotate(list.subList(j, k+1), -1);
      * </pre>
      * To make this concrete, suppose <tt>list</tt> comprises
      * <tt>[a, b, c, d, e]</tt>.  To move the element at index <tt>1</tt>
      * (<tt>b</tt>) forward two positions, perform the following invocation:
      * <pre>
-     *     pithw6.Collections.rotate(l.subList(1, 4), -1);
+     *     pit.Collections.rotate(l.subList(1, 4), -1);
      * </pre>
      * The resulting list is <tt>[a, c, d, b, e]</tt>.
      * <p>

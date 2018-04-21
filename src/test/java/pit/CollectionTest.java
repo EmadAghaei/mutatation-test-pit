@@ -1,4 +1,4 @@
-package pithw6;
+package pit;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,7 +10,7 @@ public class CollectionTest {
     List<String> elemnts = null;
     @Before
     public void init() {
-        //  collections = new pithw6.Collections();
+        //  collections = new pit.Collections();
         elemnts = new ArrayList<String>();
         elemnts.add("dog");
         elemnts.add("cat");
