@@ -8,24 +8,11 @@ Execute the following commands to  run the mutation tests
 
 
 what is PIT? Why we should use Mutation tests like PIT? 
-a.	mutations are automatically seeded into our code, then the Junits are run. If the tests fail then the mutation is killed, if your tests pass then the mutation survived. PIT runs the Junit tests against automatically modified versions of the code. When the code changes, it should produce different results and cause the unit tests to fail. If a unit test does not fail in this situation, it may indicate an issue with the test suite. Generally, the quality of the Junits can be evaluated from the percentage of mutations killed.
-b.	Line coverage measures only which code is executed by the Junit tests. It does not check that your tests are actually able to detect faults in the executed code. It is therefore only able to identify code that is definitely not tested
+1.	mutations are automatically seeded into our code, then the Junits are run. If the tests fail then the mutation is killed, if your tests pass then the mutation survived. PIT runs the Junit tests against automatically modified versions of the code. When the code changes, it should produce different results and cause the unit tests to fail. If a unit test does not fail in this situation, it may indicate an issue with the test suite. Generally, the quality of the Junits can be evaluated from the percentage of mutations killed.
+2. Line coverage measures only which code is executed by the Junit tests. It does not check that your tests are actually able to detect faults in the executed code. It is therefore only able to identify code that is definitely not tested
 
-1.	I have chosen Collections.java class for doing the code mutation analyze.
-2.	I created a Junit test for Collections class and tried to write test methods for important method of Collection class.
-3.	I prepared a customized version of Collections.java class which contains essentials methods. 
-Running PIT
+
 I used the default mutation operator. When I did PIT test the mutation coverage was around 65%, but the line coverage was too around 92%. The following picture shows the result.
-
- 
-Figure 1: Junits runing via Maven
-
- 
-
-
-
-
-
 
 The following is the console result of the running of PIT.
 ================================================================================
@@ -87,7 +74,7 @@ Carefully analyzing the results show although lince coverage is high but the mut
 
 Strength of coverages
 
-I find out: 
+
 •	Mutation coverage is more powerful than branch coverage.
 •	 Brach coverage is more powerful than statement coverage.
 •	100% mutation coverage appears to be better than 100% code coverage in practice.
