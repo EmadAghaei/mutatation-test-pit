@@ -370,24 +370,24 @@ public class Collections {
      * @throws UnsupportedOperationException if the destination list's
      *                                       list-iterator does not support the <tt>set</tt> operation.
      */
-    public static <T> void copy(List<? super T> dest, List<? extends T> src) {
-        int srcSize = src.size();
-        if (srcSize > dest.size())
-            throw new IndexOutOfBoundsException("Source does not fit in dest");
-
-        if (srcSize < COPY_THRESHOLD ||
-                (src instanceof RandomAccess && dest instanceof RandomAccess)) {
-            for (int i = 0; i < srcSize; i++)
-                dest.set(i, src.get(i));
-        } else {
-            ListIterator<? super T> di = dest.listIterator();
-            ListIterator<? extends T> si = src.listIterator();
-            for (int i = 0; i < srcSize; i++) {
-                di.next();
-                di.set(si.next());
-            }
-        }
-    }
+//    public static <T> void copy(List<? super T> dest, List<? extends T> src) {
+//        int srcSize = src.size();
+//        if (srcSize > dest.size())
+//            throw new IndexOutOfBoundsException("Source does not fit in dest");
+//
+//        if (srcSize < COPY_THRESHOLD ||
+//                (src instanceof RandomAccess && dest instanceof RandomAccess)) {
+//            for (int i = 0; i < srcSize; i++)
+//                dest.set(i, src.get(i));
+//        } else {
+//            ListIterator<? super T> di = dest.listIterator();
+//            ListIterator<? extends T> si = src.listIterator();
+//            for (int i = 0; i < srcSize; i++) {
+//                di.next();
+//                di.set(si.next());
+//            }
+//        }
+//    }
 
     /**
      * Returns the minimum element of the given collection, according to the
@@ -492,50 +492,50 @@ public class Collections {
      *                                       its list-iterator does not support the <tt>set</tt> operation.
      * @since 1.4
      */
-    public static void rotate(List<?> list, int distance) {
-        if (/*list instanceof RandomAccess ||*/ list.size() < ROTATE_THRESHOLD)
-            rotate1(list, distance);
-        else
-            rotate2(list, distance);
-    }
-
-    private static <T> void rotate1(List<T> list, int distance) {
-        int size = list.size();
-        if (size == 0)
-            return;
-        distance = distance % size;
-        if (distance < 0)
-            distance += size;
-        if (distance == 0)
-            return;
-
-        for (int cycleStart = 0, nMoved = 0; nMoved != size; cycleStart++) {
-            T displaced = list.get(cycleStart);
-            int i = cycleStart;
-            do {
-                i += distance;
-                if (i >= size)
-                    i -= size;
-                displaced = list.set(i, displaced);
-                nMoved++;
-            } while (i != cycleStart);
-        }
-    }
-
-    private static void rotate2(List<?> list, int distance) {
-        int size = list.size();
-        if (size == 0)
-            return;
-        int mid = -distance % size;
-        if (mid < 0)
-            mid += size;
-        if (mid == 0)
-            return;
-
-        reverse(list.subList(0, mid));
-        reverse(list.subList(mid, size));
-        reverse(list);
-    }
+//    public static void rotate(List<?> list, int distance) {
+//        if (/*list instanceof RandomAccess ||*/ list.size() < ROTATE_THRESHOLD)
+//            rotate1(list, distance);
+//        else
+//            rotate2(list, distance);
+//    }
+//
+//    private static <T> void rotate1(List<T> list, int distance) {
+//        int size = list.size();
+//        if (size == 0)
+//            return;
+//        distance = distance % size;
+//        if (distance < 0)
+//            distance += size;
+//        if (distance == 0)
+//            return;
+//
+//        for (int cycleStart = 0, nMoved = 0; nMoved != size; cycleStart++) {
+//            T displaced = list.get(cycleStart);
+//            int i = cycleStart;
+//            do {
+//                i += distance;
+//                if (i >= size)
+//                    i -= size;
+//                displaced = list.set(i, displaced);
+//                nMoved++;
+//            } while (i != cycleStart);
+//        }
+//    }
+//
+//    private static void rotate2(List<?> list, int distance) {
+//        int size = list.size();
+//        if (size == 0)
+//            return;
+//        int mid = -distance % size;
+//        if (mid < 0)
+//            mid += size;
+//        if (mid == 0)
+//            return;
+//
+//        reverse(list.subList(0, mid));
+//        reverse(list.subList(mid, size));
+//        reverse(list);
+//    }
 
     /**
      * Replaces all occurrences of one specified value in a list with another.
@@ -555,45 +555,45 @@ public class Collections {
      *                                       its list-iterator does not support the <tt>set</tt> operation.
      * @since 1.4
      */
-    public static <T> boolean replaceAll(List<T> list, T oldVal, T newVal) {
-        boolean result = false;
-        int size = list.size();
-        if (size < REPLACEALL_THRESHOLD /*|| list instanceof RandomAccess*/) {
-            if (oldVal == null) {
-                for (int i = 0; i < size; i++) {
-                    if (list.get(i) == null) {
-                        list.set(i, newVal);
-                        result = true;
-                    }
-                }
-            } else {
-                for (int i = 0; i < size; i++) {
-                    if (oldVal.equals(list.get(i))) {
-                        list.set(i, newVal);
-                        result = true;
-                    }
-                }
-            }
-        } else {
-            ListIterator<T> itr = list.listIterator();
-            if (oldVal == null) {
-                for (int i = 0; i < size; i++) {
-                    if (itr.next() == null) {
-                        itr.set(newVal);
-                        result = true;
-                    }
-                }
-            } else {
-                for (int i = 0; i < size; i++) {
-                    if (oldVal.equals(itr.next())) {
-                        itr.set(newVal);
-                        result = true;
-                    }
-                }
-            }
-        }
-        return result;
-    }
+//    public static <T> boolean replaceAll(List<T> list, T oldVal, T newVal) {
+//        boolean result = false;
+//        int size = list.size();
+//        if (size < REPLACEALL_THRESHOLD /*|| list instanceof RandomAccess*/) {
+//            if (oldVal == null) {
+//                for (int i = 0; i < size; i++) {
+//                    if (list.get(i) == null) {
+//                        list.set(i, newVal);
+//                        result = true;
+//                    }
+//                }
+//            } else {
+//                for (int i = 0; i < size; i++) {
+//                    if (oldVal.equals(list.get(i))) {
+//                        list.set(i, newVal);
+//                        result = true;
+//                    }
+//                }
+//            }
+//        } else {
+//            ListIterator<T> itr = list.listIterator();
+//            if (oldVal == null) {
+//                for (int i = 0; i < size; i++) {
+//                    if (itr.next() == null) {
+//                        itr.set(newVal);
+//                        result = true;
+//                    }
+//                }
+//            } else {
+//                for (int i = 0; i < size; i++) {
+//                    if (oldVal.equals(itr.next())) {
+//                        itr.set(newVal);
+//                        result = true;
+//                    }
+//                }
+//            }
+//        }
+//        return result;
+//    }
 
     /**
      * Returns the starting position of the first occurrence of the specified
@@ -615,38 +615,38 @@ public class Collections {
      * is no such occurrence.
      * @since 1.4
      */
-    public static int indexOfSubList(List<?> source, List<?> target) {
-        int sourceSize = source.size();
-        int targetSize = target.size();
-        int maxCandidate = sourceSize - targetSize;
-
-        if (sourceSize < INDEXOFSUBLIST_THRESHOLD ||
-                (source instanceof RandomAccess && target instanceof RandomAccess)) {
-            nextCand:
-            for (int candidate = 0; candidate <= maxCandidate; candidate++) {
-                for (int i = 0, j = candidate; i < targetSize; i++, j++)
-                    if (!eq(target.get(i), source.get(j)))
-                        continue nextCand;  // Element mismatch, try next cand
-                return candidate;  // All elements of candidate matched target
-            }
-        } else {  // Iterator version of above algorithm
-            ListIterator<?> si = source.listIterator();
-            nextCand:
-            for (int candidate = 0; candidate <= maxCandidate; candidate++) {
-                ListIterator<?> ti = target.listIterator();
-                for (int i = 0; i < targetSize; i++) {
-                    if (!eq(ti.next(), si.next())) {
-                        // Back up source iterator to next candidate
-                        for (int j = 0; j < i; j++)
-                            si.previous();
-                        continue nextCand;
-                    }
-                }
-                return candidate;
-            }
-        }
-        return -1;  // No candidate matched the target
-    }
+//    public static int indexOfSubList(List<?> source, List<?> target) {
+//        int sourceSize = source.size();
+//        int targetSize = target.size();
+//        int maxCandidate = sourceSize - targetSize;
+//
+//        if (sourceSize < INDEXOFSUBLIST_THRESHOLD ||
+//                (source instanceof RandomAccess && target instanceof RandomAccess)) {
+//            nextCand:
+//            for (int candidate = 0; candidate <= maxCandidate; candidate++) {
+//                for (int i = 0, j = candidate; i < targetSize; i++, j++)
+//                    if (!eq(target.get(i), source.get(j)))
+//                        continue nextCand;  // Element mismatch, try next cand
+//                return candidate;  // All elements of candidate matched target
+//            }
+//        } else {  // Iterator version of above algorithm
+//            ListIterator<?> si = source.listIterator();
+//            nextCand:
+//            for (int candidate = 0; candidate <= maxCandidate; candidate++) {
+//                ListIterator<?> ti = target.listIterator();
+//                for (int i = 0; i < targetSize; i++) {
+//                    if (!eq(ti.next(), si.next())) {
+//                        // Back up source iterator to next candidate
+//                        for (int j = 0; j < i; j++)
+//                            si.previous();
+//                        continue nextCand;
+//                    }
+//                }
+//                return candidate;
+//            }
+//        }
+//        return -1;  // No candidate matched the target
+//    }
 
     /**
      * Returns the starting position of the last occurrence of the specified
@@ -668,42 +668,42 @@ public class Collections {
      * is no such occurrence.
      * @since 1.4
      */
-    public static int lastIndexOfSubList(List<?> source, List<?> target) {
-        int sourceSize = source.size();
-        int targetSize = target.size();
-        int maxCandidate = sourceSize - targetSize;
-
-        if (sourceSize < INDEXOFSUBLIST_THRESHOLD ||
-                source instanceof RandomAccess) {   // Index access version
-            nextCand:
-            for (int candidate = maxCandidate; candidate >= 0; candidate--) {
-                for (int i = 0, j = candidate; i < targetSize; i++, j++)
-                    if (!eq(target.get(i), source.get(j)))
-                        continue nextCand;  // Element mismatch, try next cand
-                return candidate;  // All elements of candidate matched target
-            }
-        } else {  // Iterator version of above algorithm
-            if (maxCandidate < 0)
-                return -1;
-            ListIterator<?> si = source.listIterator(maxCandidate);
-            nextCand:
-            for (int candidate = maxCandidate; candidate >= 0; candidate--) {
-                ListIterator<?> ti = target.listIterator();
-                for (int i = 0; i < targetSize; i++) {
-                    if (!eq(ti.next(), si.next())) {
-                        if (candidate != 0) {
-                            // Back up source iterator to next candidate
-                            for (int j = 0; j <= i + 1; j++)
-                                si.previous();
-                        }
-                        continue nextCand;
-                    }
-                }
-                return candidate;
-            }
-        }
-        return -1;  // No candidate matched the target
-    }
+//    public static int lastIndexOfSubList(List<?> source, List<?> target) {
+//        int sourceSize = source.size();
+//        int targetSize = target.size();
+//        int maxCandidate = sourceSize - targetSize;
+//
+//        if (sourceSize < INDEXOFSUBLIST_THRESHOLD ||
+//                source instanceof RandomAccess) {   // Index access version
+//            nextCand:
+//            for (int candidate = maxCandidate; candidate >= 0; candidate--) {
+//                for (int i = 0, j = candidate; i < targetSize; i++, j++)
+//                    if (!eq(target.get(i), source.get(j)))
+//                        continue nextCand;  // Element mismatch, try next cand
+//                return candidate;  // All elements of candidate matched target
+//            }
+//        } else {  // Iterator version of above algorithm
+//            if (maxCandidate < 0)
+//                return -1;
+//            ListIterator<?> si = source.listIterator(maxCandidate);
+//            nextCand:
+//            for (int candidate = maxCandidate; candidate >= 0; candidate--) {
+//                ListIterator<?> ti = target.listIterator();
+//                for (int i = 0; i < targetSize; i++) {
+//                    if (!eq(ti.next(), si.next())) {
+//                        if (candidate != 0) {
+//                            // Back up source iterator to next candidate
+//                            for (int j = 0; j <= i + 1; j++)
+//                                si.previous();
+//                        }
+//                        continue nextCand;
+//                    }
+//                }
+//                return candidate;
+//            }
+//        }
+//        return -1;  // No candidate matched the target
+//    }
 
 
 //    // Unmodifiable Wrappers
