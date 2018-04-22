@@ -75,13 +75,13 @@ Carefully analyzing the results show although lince coverage is high but the mut
 Strength of coverages
 
 
-•	Mutation coverage is more powerful than branch coverage.
-•	 Brach coverage is more powerful than statement coverage.
-•	100% mutation coverage appears to be better than 100% code coverage in practice.
-•	Mutation tests has more cost than line coverage. We should write more tests to cover all mutator to kill the code.
-•	Mutator for conditional like binderies, negate, and remove cover condition coverage.
-•	Edge coverage does not imply condition coverage, but condition coverage does imply edge coverage. By covering all conditions, will be guaranteed to cover every edge; but by covering every edge, you are not guaranteed to cover every condition. 
-•	For example,
+1.	Mutation coverage is more powerful than branch coverage.
+2.	 Brach coverage is more powerful than statement coverage.
+3.	100% mutation coverage appears to be better than 100% code coverage in practice.
+4.	Mutation tests has more cost than line coverage. We should write more tests to cover all mutator to kill the code.
+5.	Mutator for conditional like binderies, negate, and remove cover condition coverage.
+6.	Edge coverage does not imply condition coverage, but condition coverage does imply edge coverage. By covering all conditions, will be guaranteed to cover every edge; but by covering every edge, you are not guaranteed to cover every condition. 
+7.	For example,
 int method (int a, int b)
 {
     If (a < 0 || b < 0)
